@@ -1,29 +1,16 @@
 class Solution {
     func removeKdigits(_ num: String, _ k: Int) -> String {
-        var res = [Character](), k = k
-        let size = num.count - k
-        
+        var k = k
+        var stack: [Character] = []
         for char in num {
-            while k > 0 && res.count > 0 && charToInt(res.last!) > charToInt(char) {
-                res.removeLast()
+            while k > 0, let top = stack.last, top > char {
+                stack.removeLast()
                 k -= 1
             }
-            res.append(char)
+            stack.append(char)
         }
-        
-        res = Array(res[0..<size])
-        for char in res {
-            if char != "0" {
-                break
-            } else {
-                res.removeFirst()
-            }
-        }
-
-        return res.isEmpty ? "0" : String(res)
-    }
-    
-    private func charToInt(_ c: Character) -> Int {
-        return Int(String(c))!
+        stack.removeLast(k)
+        let result = stack.drop(while: { $0 == "0" })
+        return result.isEmpty ? "0" : String(result)
     }
 }
