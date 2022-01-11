@@ -30,7 +30,7 @@ class Solution {
         
         while index1 <= index2 {
             if nums[index1] == val {
-                nums.swapAt(index1, index2)
+                nums[index1] = nums[index2]
                 index2 -= 1
             } else {
                 index1 += 1
