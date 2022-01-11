@@ -1,3 +1,24 @@
+// Naive Solution
+class Solution {
+    func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
+        let count = nums.count
+        var itemsRemoved = 0
+        var i = 0
+
+        while i < nums.count {
+            if nums[i] == val {
+                nums.remove(at: i)
+                itemsRemoved += 1
+            } else {
+                i += 1
+            }
+        }
+
+        return count - itemsRemoved
+    }
+}
+
+// Better Solution
 class Solution {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
         if nums.count == 0 {
