@@ -21,10 +21,6 @@ class Solution {
 // Better Solution
 class Solution {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
-        if nums.count == 0 {
-            return 0
-        }
-        
         var index1: Int = 0
         var index2: Int = nums.count - 1
         
